@@ -34,7 +34,6 @@ def main():
     bwaa: int = 0
     for fDIndex in fixedData:
         bwaa+= 1
-        print(bwaa, "Hi")
         #if all(x < y for x, y in zip(fDIndex, fDIndex[1:])):
             #opType = True
         #elif all(x > y for x, y in zip(fDIndex, fDIndex[1:])):
@@ -42,6 +41,8 @@ def main():
         opType = checkThings(fDIndex)
         if opType:
             count += 1
+        else:
+            print("Error at:", bwaa)
             
     print(count)
 
