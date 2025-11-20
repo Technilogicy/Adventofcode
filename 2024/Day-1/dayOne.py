@@ -4,6 +4,7 @@ def main():
     lines: list[str] = []
     lineOne: list[int] = []
     lineTwo: list[int] = []
+    line: str
     num1: int = 0
     num2: int = 0
     total: int = 0
