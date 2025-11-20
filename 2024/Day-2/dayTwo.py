@@ -1,21 +1,26 @@
 import os
 
+# Check the things
 def checkThings(inputList: list[int]):
     returnVal: bool = False
+    # Check if all increasing/decreasing
     if all(x < y for x, y in zip(inputList, inputList[1:])):
         returnVal = True
     elif all(x > y for x, y in zip(inputList, inputList[1:])):
         returnVal = True
+    # Check if it isn't in the valid range
     for j, t in zip(inputList, inputList[1:]):
         absol: int = abs(j-t)
         if not (absol in range(1, 4)):
             returnVal = False
     return returnVal
 
+# Bruteforce because this sucked
 def brute(input: list[int]):
     tNewList: list[int] = []
     i: int = 0
     returnVal: bool = False
+    # Get the numbers, take one out, check it, repeat with different numbers until it works
     for i in range(len(input)):
         tNewList = []
         j: int = 0
@@ -23,8 +28,8 @@ def brute(input: list[int]):
             tNewList.append(j)
         tNewList.pop(i)
         if checkThings(tNewList):
-            print(input, tNewList)
             returnVal = True
+            break
     return returnVal
 
 def main():
@@ -45,13 +50,16 @@ def main():
         fullLine = list(map(int, data[i].strip().split(" ")))
         fixedData.append(fullLine)
 
+    # Check allat
     for fDIndex in fixedData:
         opType = checkThings(fDIndex)
+        # checks twice because i didnt want to bother with another variable
         if not opType:
             opType = brute(fDIndex)
         if opType:
             count += 1
-            
+
+    # Should be good.... 
     print(count)
 
 if __name__ == "__main__":
